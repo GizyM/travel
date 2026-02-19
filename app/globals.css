@@ -91,7 +91,7 @@ body {
   padding-bottom: 20px;
 }
 
-.navbar__logoLink {
+.navbar__logo-link {
   display: inline-flex;
   align-items: center;
 }
@@ -132,7 +132,7 @@ body {
   justify-content: center;
 }
 
-.navbar__menuBtn {
+.navbar__menu-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -142,7 +142,204 @@ body {
   cursor: pointer;
 }
 
-@media (min-width: 1024px) {
+/* Hero */
+
+.hero {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1440px;
+  padding: 40px 24px 128px;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+.hero__map {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+}
+
+.hero__camp-icon {
+  position: absolute;
+  left: -5px;
+  top: -30px;
+  width: 40px;
+  height: auto;
+}
+
+.hero__title {
+  font-size: 52px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.hero__description {
+  margin-top: 24px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #9ca3af;
+  max-width: 520px;
+}
+
+.hero__reviews-row {
+  margin: 44px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+}
+
+.hero__stars {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hero__reviews-text {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1d4ed8;
+}
+
+.hero__reviews-subtext {
+  margin-left: 4px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #9ca3af;
+}
+
+.hero__buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.hero__card-wrap {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  z-index: 2;
+}
+
+.hero__card {
+  width: 268px;
+  background: #0f3d2e;
+  border-radius: 24px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.hero__card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hero__card-label {
+  font-size: 16px;
+  color: #d1d5db;
+}
+
+.hero__card-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+}
+
+.hero__card-grid {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.hero__card-col {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Camp */
+
+.camp {
+  position: relative;
+  width: 100%;
+  padding: 40px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.camp__scroll {
+  display: flex;
+  gap: 32px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0 24px;
+  height: 340px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.camp__scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.camp__scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.campSite {
+  height: 100%;
+  width: 100%;
+  min-width: 1100px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 0;
+  scroll-snap-align: start;
+}
+
+/* Responsiveness */
+
+@media (max-width: 1280px) {
+  .hero {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .hero__content {
+    width: 50%;
+  }
+
+  .camp__scroll {
+    height: 640px;
+  }
+}
+
+@media (max-width: 1024px) {
   .navbar__links {
     display: flex;
   }
@@ -151,12 +348,56 @@ body {
     display: flex;
   }
 
-  .navbar__menuBtn {
+  .navbar__menu-btn {
     display: none;
   }
 
   .navbar {
     padding-left: 80px;
     padding-right: 80px;
+  }
+
+  .hero__camp-icon {
+    width: 50px;
+  }
+
+  .hero__title {
+    font-size: 88px;
+  }
+
+  .hero__reviews-text {
+    font-size: 20px;
+  }
+
+  .hero__reviews-subtext {
+    font-size: 20px;
+  }
+
+  .camp {
+    padding: 80px 0;
+    margin-bottom: 40px;
+  }
+
+  .camp__scroll {
+    height: 400px;
+    padding: 0 80px;
+  }
+
+  .campSite {
+    border-top-right-radius: 36px;
+    border-bottom-right-radius: 36px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    gap: 112px;
+    padding: 80px 80px 128px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero__buttons {
+    flex-direction: row;
   }
 }

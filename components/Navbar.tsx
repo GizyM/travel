@@ -11,7 +11,7 @@ interface NavbarProps {
 const Navbar = ({ NAV_LINKS }: NavbarProps) => {
   return (
     <nav className="navbar">
-      <Link href="/" className="navbar__logoLink">
+      <Link href="/" className="navbar__logo-link">
       <Image src="/hilink-logo.svg" alt="logo" width={74} height={74} />
       </Link>
 
@@ -29,11 +29,11 @@ const Navbar = ({ NAV_LINKS }: NavbarProps) => {
         <Button type="button" title="Login" icon="/user.svg" variant="btn_dark_green" full={false} />
       </div>
 
-      <button className="navbar__menuBtn" type="button">
+      <button className="navbar__menu-btn" type="button">
         <Image src="/menu.svg" alt="menu" width={32} height={32} />
       </button>
     </nav>
   );
 };
 
-export default Navbar
+export default Navbar;

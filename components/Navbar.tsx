@@ -1,39 +1,42 @@
-import { NAV_LINKS } from "../constants";
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
-import Button from "./Button";
+import { NAV_LINKS } from '@/constants'
+import Image from 'next/image'
+import Link from 'next/link'
+import React from 'react'
+import Button from './Button'
 
-interface NavbarProps {
-  NAV_LINKS: typeof NAV_LINKS;
-}
-
-const Navbar = ({ NAV_LINKS }: NavbarProps) => {
-  return (
-    <nav className="navbar">
-      <Link href="/" className="navbar__logo-link">
-      <Image src="/hilink-logo.svg" alt="logo" width={74} height={74} />
-      </Link>
-
-      <ul className="navbar__links">
-        {NAV_LINKS?.map((link) => (
-          <li key={link.key} className="navbar__item">
-            <Link href={link.href} className="navbar__link">
-            {link.label}
+const Navbar = () => {
+    return (
+        <nav className='flexBetween max-container padding-container relative z-30 py-5'>
+            <Link href="/">
+                <Image src="/hilink-logo.svg" alt='logo' width={74} height={29} />
             </Link>
-          </li>
-        ))}
-      </ul>
 
-      <div className="navbar__actions">
-        <Button type="button" title="Login" icon="/user.svg" variant="btn_dark_green" full={false} />
-      </div>
+            <ul className='hidden h-full gap-12 lg:flex'>
+                {NAV_LINKS.map((link) => (
+                    <Link href={link.href} key={link.key} className='regular-16 text-gray-50 flexCenter cursor-pointer pb-1.5 transition-all hover:font-bold'>
+                        {link.label}
+                    </Link>
+                ))}
+            </ul>
 
-      <button className="navbar__menu-btn" type="button">
-        <Image src="/menu.svg" alt="menu" width={32} height={32} />
-      </button>
-    </nav>
-  );
-};
+            <div className='lg:flexCenter hidden'>
+                <Button
+                    type="button"
+                    title="Login"
+                    icon="/user.svg"
+                    variant="btn_dark_green"
+                />
+            </div>
+
+            <Image
+                src="menu.svg"
+                alt='menu'
+                width={32}
+                height={32}
+                className='inline-block cursor-pointer lg:hidden'
+            />
+        </nav>
+    )
+}
 
 export default Navbar;

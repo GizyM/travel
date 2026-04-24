@@ -1,85 +1,85 @@
-import { FOOTER_CONTACT_INFO, FOOTER_LINKS, SOCIALS } from '@/constants'
-import Image from 'next/image'
-import Link from 'next/link'
-import React from 'react'
+import { FOOTER_CONTACT_INFO, FOOTER_LINKS, SOCIALS } from "@/constants";
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
 
 const Footer = () => {
-    return (
-        <footer className='flexCenter mb-24'>
-            <div className='padding-container max-container flex w-full flex-col gap-14'>
-                <div className='flex flex-col items-start justify-center gap-[10%] md:flex-row'>
-                    <Link href="/" className='mb-10'>
-                        <Image src="hilink-logo.svg" alt='logo' width={74} height={29} />
+  return (
+    <footer id="footer" className="mb-24 flex items-center justify-center">
+      <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-14 px-6 lg:px-20">
+        <div className="flex flex-col items-start justify-center gap-10 md:flex-row">
+          <Link href="/" className="mb-10 shrink-0">
+            <Image src="/hilink-logo.svg" alt="logo" width={74} height={29} />
+          </Link>
+
+          <div className="flex flex-wrap gap-10 sm:justify-between md:flex-1">
+            {FOOTER_LINKS.map((column) => (
+              <FooterColumn key={column.title} title={column.title}>
+                <ul className="flex flex-col gap-4 text-[14px] text-[#7b7b7b]">
+                  {column.links.map((link) => (
+                    <li key={link}>
+                      <Link href="/" className="transition hover:text-[#30af5b]">
+                        {link}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </FooterColumn>
+            ))}
+
+            <FooterColumn title={FOOTER_CONTACT_INFO.title}>
+              <div className="flex flex-col gap-4 text-[14px] text-[#7b7b7b]">
+                {FOOTER_CONTACT_INFO.links.map((link) => (
+                  <Link
+                    href="/"
+                    key={link.label}
+                    className="flex gap-4 transition hover:text-[#30af5b] md:flex-col lg:flex-row"
+                  >
+                    <span className="whitespace-nowrap">{link.label}</span>
+                    <span className="whitespace-nowrap font-semibold">
+                      {link.value}
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </FooterColumn>
+
+            <FooterColumn title={SOCIALS.title}>
+              <ul className="flex gap-4">
+                {SOCIALS.links.map((link) => (
+                  <li key={link}>
+                    <Link href="/" className="transition hover:opacity-70">
+                      <Image src={link} alt="social icon" width={24} height={24} />
                     </Link>
+                  </li>
+                ))}
+              </ul>
+            </FooterColumn>
+          </div>
+        </div>
 
-                    <div className='flex flex-wrap gap-10 sm:justify-between md:flex-1'>
-                        {FOOTER_LINKS.map((columns) => (
-                            <FooterColumn title={columns.title}>
-                                <ul className='regular-14 flex flex-col gap-4 text-gray-30'>
-                                    {columns.links.map((link) => (
-                                        <Link href="/" key={link}>
-                                            {link}
-                                        </Link>
-                                    ))}
-                                </ul>
-                            </FooterColumn>
-                        ))}
+        <div className="h-px w-full bg-[#a2a2a2]" />
 
-                        <div className='flex flex-col gap-5'>
-                            <FooterColumn title={FOOTER_CONTACT_INFO.title}>
-                                {FOOTER_CONTACT_INFO.links.map((link) => (
-                                    <Link href="/"
-                                        key={link.label}
-                                        className='flex gap-4 md:flex-col lg:flex-row'
-                                    >
-                                        <p className='whitespace-nowrap'>{link.label}</p>
-                                        <p className='medium-14 whitespace-nowrap'>{link.value}</p>
-                                    </Link>
-                                ))}
-                            </FooterColumn>
-                        </div>
-
-                        <div className='flex flex-col gap-5'>
-                            <FooterColumn title={SOCIALS.title}>
-                                <ul className='regular-14 flex gap-4 text-gray-30'>
-                                    {SOCIALS.links.map((link) => (
-                                        <Link href="/" key={link}>
-                                            <Image
-                                                src={link}
-                                                alt='logo'
-                                                width={24}
-                                                height={24}
-                                            />
-                                        </Link>
-                                    ))}
-
-                                </ul>
-
-                            </FooterColumn>
-                        </div>
-                    </div>
-                </div>
-
-                <div className='border bg-gray-20' />
-                <p className='regular-14 w-full text-center text-gray-30'>2024 Hilink | All rights reserved</p>
-
-            </div>
-        </footer>
-    )
-}
+        <p className="w-full text-center text-[14px] text-[#7b7b7b]">
+          2024 Hilink | All rights reserved
+        </p>
+      </div>
+    </footer>
+  );
+};
 
 type FooterColumnProps = {
-    title: string;
-    children: React.ReactNode;
-}
+  title: string;
+  children: React.ReactNode;
+};
 
 const FooterColumn = ({ title, children }: FooterColumnProps) => {
-    return (
-        <div className='flex flex-col gap-5'>
-            <h4 className='bold-18 whitespace-nowrap'>{title}</h4>
-            {children}
-        </div>
-    )
-}
+  return (
+    <div className="flex flex-col gap-5">
+      <h4 className="whitespace-nowrap text-[18px] font-bold">{title}</h4>
+      {children}
+    </div>
+  );
+};
 
-export default Footer
+export default Footer;
